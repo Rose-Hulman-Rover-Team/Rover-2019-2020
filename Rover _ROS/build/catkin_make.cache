@@ -1,0 +1,2 @@
+mrobot_bringup:mrobot_communicatio:mrobot_control:mrobot_description:mrobot_gazebo:mrobot_navigation:mrobot_teleop:ros_robotics
+-DCATKIN_DEVEL_PREFIX=/home/chenz16/Desktop/robot_mrobot/devel -DCMAKE_INSTALL_PREFIX=/home/chenz16/Desktop/robot_mrobot/install -G Unix Makefiles
