@@ -1,35 +1,35 @@
-##/usr/bin/env python
-
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtPrintSupport import *
-import qdarkstyle
-import sys
-import sqlite3
-import time
-import os
 import cv2
 import qdarkstyle
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
 
 class Thread(QThread):
-    changePixmap = pyqtSignal(QImage)
+    change_pixel_map = pyqtSignal(QImage)
+
     def run(self):
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture("auto.mp4")
         while True:
             ret, frame = cap.read()
             if ret:
                 rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                h, w, ch = rgbImage.shape
-                bytesPerLine = ch * w
+                h, w, channel = rgbImage.shape
+                bytesPerLine = channel * w
                 convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
-                p = convertToQtFormat.scaled(640, 480, Qt.KeepAspectRatio)
-                self.changePixmap.emit(p) 
+                p = convertToQtFormat.scaled(1080, 1080, Qt.KeepAspectRatio)
+                self.change_pixel_map.emit(p)
+
 
 class WidgetGallery(QMainWindow):
     def __init__(self, parent=None):
         super(WidgetGallery, self).__init__(parent)
 
+        self.progressBar = QProgressBar()
+        self.bottomRightGroupBox = QGroupBox("Group 3")
+        self.bottomLeftTabWidget = QTabWidget()
+        self.topRightGroupBox = QGroupBox("Group 2")
+        self.topLeftGroupBox = QGroupBox("Group 1")
         self.originalPalette = QApplication.palette()
 
         styleComboBox = QComboBox()
@@ -74,15 +74,13 @@ class WidgetGallery(QMainWindow):
         mainLayout.setRowStretch(2, 1)
         mainLayout.setColumnStretch(0, 1)
         mainLayout.setColumnStretch(1, 1)
-        
-        self.setMinimumSize(1900, 1080)
 
-        #self.layout = mainLayout
         gridWidget = QWidget()
         gridWidget.setLayout(mainLayout)
-        self.setCentralWidget(gridWidget)   
+        self.setCentralWidget(gridWidget)
+        self.setMinimumSize(3840, 2160)
 
-        self.setWindowTitle("Styles")
+        self.setWindowTitle("Rover UI")
         self.changeStyle('Windows')
 
     def changeStyle(self, styleName):
@@ -90,7 +88,7 @@ class WidgetGallery(QMainWindow):
         self.changePalette()
 
     def changePalette(self):
-        if (self.useStylePaletteCheckBox.isChecked()):
+        if self.useStylePaletteCheckBox.isChecked():
             QApplication.setPalette(QApplication.style().standardPalette())
         else:
             QApplication.setPalette(self.originalPalette)
@@ -100,27 +98,21 @@ class WidgetGallery(QMainWindow):
         maxVal = self.progressBar.maximum()
         self.progressBar.setValue(curVal + (maxVal - curVal) / 100)
 
-    def start_movie(self):
-        self.movie_thread = MovieThread(self.camera)
-        self.movie_thread.start()
-
     def createTopLeftGroupBox(self):
-        self.topLeftGroupBox = QGroupBox("Group 1")
+        # radioButton1 = QRadioButton("Radio button 1")
+        # radioButton2 = QRadioButton("Radio button 2")
+        # radioButton3 = QRadioButton("Radio button 3")
+        # radioButton1.setChecked(True)
 
-        #radioButton1 = QRadioButton("Radio button 1")
-        #radioButton2 = QRadioButton("Radio button 2")
-        #radioButton3 = QRadioButton("Radio button 3")
-        #radioButton1.setChecked(True)
-
-        #checkBox = QCheckBox("Tri-state check box")
-        #checkBox.setTristate(True)
-        #checkBox.setCheckState(Qt.PartiallyChecked)
-        self.videoStream()       
+        # checkBox = QCheckBox("Tri-state check box")
+        # checkBox.setTristate(True)
+        # checkBox.setCheckState(Qt.PartiallyChecked)
+        self.videoStream()
 
         layout = QVBoxLayout()
         layout.addWidget(self.videoLabel)
         layout.addStretch(1)
-        self.topLeftGroupBox.setLayout(layout)   
+        self.topLeftGroupBox.setLayout(layout)
 
     def setImage(self, image):
         self.videoLabel.setPixmap(QPixmap.fromImage(image))
@@ -129,35 +121,35 @@ class WidgetGallery(QMainWindow):
         self.videoLabel = QLabel(self)
         self.videoLabel.resize(1280, 960)
         th = Thread(self)
-        th.changePixmap.connect(self.setImage)
-        th.start() 
+        th.change_pixel_map.connect(self.setImage)
+        th.start()
 
     def createTopRightGroupBox(self):
-        self.topRightGroupBox = QGroupBox("Group 2")
-
-        defaultPushButton = QPushButton("Default Push Button")
-        defaultPushButton.setDefault(True)
-
-        togglePushButton = QPushButton("Toggle Push Button")
-        togglePushButton.setCheckable(True)
-        togglePushButton.setChecked(True)
-        flatPushButton = QPushButton("Flat Push Button")
-        flatPushButton.setFlat(True)
+        startSwitch = QPushButton("Rover Bring Up")
+        startSwitch.setDefault(True)
+        startSwitch.setMaximumSize(300, 100)
+        offSwitch = QPushButton("Rover Shutdown")
+        offSwitch.setDefault(True)
+        offSwitch.setMaximumSize(300, 100)
 
         layout = QVBoxLayout()
-        layout.addWidget(defaultPushButton)
-        layout.addWidget(togglePushButton)
-        layout.addWidget(flatPushButton)
+        layout.addWidget(startSwitch)
+        layout.addWidget(offSwitch)
+        # layout.addWidget(flatPushButton)
         layout.addStretch(1)
         self.topRightGroupBox.setLayout(layout)
 
     def createBottomLeftTabWidget(self):
-        self.bottomLeftTabWidget = QTabWidget()
         self.bottomLeftTabWidget.setSizePolicy(QSizePolicy.Preferred,
-                QSizePolicy.Ignored)
+                                               QSizePolicy.Ignored)
+
+        h_headers = ["data", "time"]
+        v_headers = ["GPS", "velocity", "Voltage", "mode", "heading"]
 
         tab1 = QWidget()
-        tableWidget = QTableWidget(10, 10)
+        tableWidget = QTableWidget(5, 2)
+        tableWidget.setHorizontalHeaderLabels(h_headers)
+        tableWidget.setVerticalHeaderLabels(v_headers)
 
         tab1hbox = QHBoxLayout()
         tab1hbox.setContentsMargins(5, 5, 5, 5)
@@ -168,10 +160,10 @@ class WidgetGallery(QMainWindow):
         textEdit = QTextEdit()
 
         textEdit.setPlainText("Twinkle, twinkle, little star,\n"
-                              "How I wonder what you are.\n" 
+                              "How I wonder what you are.\n"
                               "Up above the world so high,\n"
                               "Like a diamond in the sky.\n"
-                              "Twinkle, twinkle, little star,\n" 
+                              "Twinkle, twinkle, little star,\n"
                               "How I wonder what you are!\n")
 
         tab2hbox = QHBoxLayout()
@@ -183,7 +175,6 @@ class WidgetGallery(QMainWindow):
         self.bottomLeftTabWidget.addTab(tab2, "Text &Edit")
 
     def createBottomRightGroupBox(self):
-        self.bottomRightGroupBox = QGroupBox("Group 3")
         self.bottomRightGroupBox.setCheckable(True)
         self.bottomRightGroupBox.setChecked(True)
 
@@ -217,7 +208,6 @@ class WidgetGallery(QMainWindow):
         self.bottomRightGroupBox.setLayout(layout)
 
     def createProgressBar(self):
-        self.progressBar = QProgressBar()
         self.progressBar.setRange(0, 10000)
         self.progressBar.setValue(0)
 
@@ -227,11 +217,10 @@ class WidgetGallery(QMainWindow):
 
 
 if __name__ == '__main__':
-
     import sys
 
     app = QApplication(sys.argv)
     app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     gallery = WidgetGallery()
     gallery.show()
-    sys.exit(app.exec_()) 
+    sys.exit(app.exec_())
