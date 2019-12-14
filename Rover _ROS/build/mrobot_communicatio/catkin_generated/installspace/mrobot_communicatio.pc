@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/robot_mrobot/install
+
+Name: mrobot_communicatio
+Description: Description of mrobot_communicatio
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chenz16/Desktop/robot_mrobot/install/lib 
+Requires: 

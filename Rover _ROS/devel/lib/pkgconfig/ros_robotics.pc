@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/robot_mrobot/devel
+
+Name: ros_robotics
+Description: Description of ros_robotics
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/chenz16/Desktop/robot_mrobot/devel/lib 
+Requires: 

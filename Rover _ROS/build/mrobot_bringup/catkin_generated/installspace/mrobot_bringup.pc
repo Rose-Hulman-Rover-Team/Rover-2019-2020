@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/robot_mrobot/install
+
+Name: mrobot_bringup
+Description: Description of mrobot_bringup
+Version: 0.0.0
+Cflags: -I/home/chenz16/Desktop/robot_mrobot/install/include
+Libs: -L/home/chenz16/Desktop/robot_mrobot/install/lib 
+Requires: 
