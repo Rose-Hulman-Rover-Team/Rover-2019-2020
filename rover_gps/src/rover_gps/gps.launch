@@ -1,0 +1,14 @@
+<launch>
+  <env name="ROSCONSOLE_FORMAT" value="[${thread}] [${node}/${function}:${line}]: ${message}"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_gps" args="0 0 0 0 0 0 robot_base gps_link" />
+
+  <arg name="dev" default="/dev/ttyUSB0"/>
+  <group ns="gps">
+    <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_navsat_driver" output="screen" respawn="true">
+      <param name="baud" value="115200"/>
+      <param name="port" value="$(arg dev)"/>
+      <param name="frame_id" value="gps_link"/>
+    </node>
+  </group>
+</launch>
