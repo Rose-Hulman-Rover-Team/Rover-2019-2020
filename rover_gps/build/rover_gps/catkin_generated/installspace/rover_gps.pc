@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/rover_gps/install
+
+Name: rover_gps
+Description: Description of rover_gps
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/chenz16/Desktop/rover_gps/install/lib 
+Requires: 

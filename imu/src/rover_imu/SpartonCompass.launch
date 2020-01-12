@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="rover_imu" type="SpartonCompassIMU.py" name="SpartonCompassIMU" respawn="true" output="screen">
+    <param name="port" value="/dev/ttyUSB0" />
+    <param name="baud" value="115200" />
+    <param name="printmodulus" value="4" />
+  </node>
+</launch>
