@@ -15,6 +15,8 @@ void setup() {
 
   Serial.begin(9600);
 
+        Serial.println("HERE");
+
   for (int i = 0; i <= 3; i++) {
     motors[i].attach(m[i], MIN_PULSE, MAX_PULSE);
   }
@@ -31,8 +33,13 @@ void loop() {
     }
 
     for (int i = 0; i <= 3; i++) {
-            motors[i].writeMicroseconds(convertToPulse(motorVals[i]));
+//        Serial.print(i);
+//        Serial.print(" ");
+//        Serial.print(motorVals[i]);
+//        Serial.print(" ");
+        motors[i].writeMicroseconds(convertToPulse(motorVals[i]));
     }
+    Serial.println();
   }
 }
 
