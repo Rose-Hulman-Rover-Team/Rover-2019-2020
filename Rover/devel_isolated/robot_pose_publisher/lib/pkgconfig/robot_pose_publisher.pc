@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/Rover/devel_isolated/robot_pose_publisher
+
+Name: robot_pose_publisher
+Description: Description of robot_pose_publisher
+Version: 0.2.4
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

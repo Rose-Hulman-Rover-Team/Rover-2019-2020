@@ -1,9 +1,0 @@
-{
-    "python.autoComplete.extraPaths": [
-        "/opt/ros/kinetic/lib/python2.7/dist-packages",
-        "/opt/intel//computer_vision_sdk_2018.5.455/python/python3.5",
-        "/opt/intel//computer_vision_sdk_2018.5.455/python/python3.5/ubuntu16",
-        "/opt/intel//computer_vision_sdk_2018.5.455/deployment_tools/model_optimizer"
-    ],
-    "python.pythonPath": "/usr/bin/python"
-}

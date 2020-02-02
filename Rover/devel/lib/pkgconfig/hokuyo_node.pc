@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/Rover/devel
+
+Name: hokuyo_node
+Description: Description of hokuyo_node
+Version: 1.7.8
+Cflags: -I/home/chenz16/Desktop/Rover/devel/include -I/home/chenz16/Desktop/Rover/src/hokuyo_node/include
+Libs: -L/home/chenz16/Desktop/Rover/devel/lib -llibhokuyo
+Requires: rosconsole

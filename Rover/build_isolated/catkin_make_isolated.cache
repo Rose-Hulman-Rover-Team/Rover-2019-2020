@@ -1,0 +1,2 @@
+cartographer:cartographer_ros/cartographer_ros:cartographer_ros/cartographer_ros_msgs:cartographer_ros/cartographer_rviz:ceres-solver:flashgo:hokuyo_node:mrobot_bringup:mrobot_description:mrobot_gazebo:mrobot_gps:mrobot_imu:mrobot_navigation:mrobot_teleop:robot_pose_publisher
+-G Ninja -DCATKIN_DEVEL_PREFIX=/home/chenz16/Desktop/Rover/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/chenz16/Desktop/Rover/install_isolated

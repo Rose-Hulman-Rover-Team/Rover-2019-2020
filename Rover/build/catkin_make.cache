@@ -1,0 +1,2 @@
+cartographer:cartographer_ros/cartographer_ros:cartographer_ros/cartographer_ros_msgs:cartographer_ros/cartographer_rviz:ceres-solver:flashgo:hokuyo_node:mrobot_bringup:mrobot_description:mrobot_gazebo:mrobot_navigation:mrobot_teleop:robot_pose_publisher
+-DCATKIN_DEVEL_PREFIX=/home/chenz16/Desktop/Rover/devel -DCMAKE_INSTALL_PREFIX=/home/chenz16/Desktop/Rover/install -G Unix Makefiles

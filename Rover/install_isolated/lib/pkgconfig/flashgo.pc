@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/Rover/install_isolated
+
+Name: flashgo
+Description: Description of flashgo
+Version: 2.3.9
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

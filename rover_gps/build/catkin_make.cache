@@ -1,2 +1,0 @@
-rover_gps
--DCATKIN_DEVEL_PREFIX=/home/chenz16/Desktop/rover_gps/devel -DCMAKE_INSTALL_PREFIX=/home/chenz16/Desktop/rover_gps/install -G Unix Makefiles

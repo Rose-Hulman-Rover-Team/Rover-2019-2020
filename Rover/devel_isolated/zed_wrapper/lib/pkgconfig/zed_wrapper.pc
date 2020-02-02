@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/Rover/devel_isolated/zed_wrapper
+
+Name: zed_wrapper
+Description: Description of zed_wrapper
+Version: 3.0.0
+Cflags: -I/home/chenz16/Desktop/Rover/devel_isolated/zed_wrapper/include
+Libs: -L/home/chenz16/Desktop/Rover/devel_isolated/zed_wrapper/lib 
+Requires: roscpp rosconsole sensor_msgs stereo_msgs image_transport dynamic_reconfigure tf2_ros tf2_geometry_msgs message_runtime

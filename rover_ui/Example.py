@@ -1,9 +1,10 @@
 ##/usr/bin/env python
 
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-#from PyQt5.PyQtWebEngineWidgets import * 
+from PyQtWebEngine import *
 from PyQt5.QtPrintSupport import *
 import qdarkstyle
 import sys

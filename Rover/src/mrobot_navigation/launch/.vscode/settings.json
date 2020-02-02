@@ -1,0 +1,9 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/chenz16/Desktop/Rover/devel/lib/python3/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages",
+        "/opt/intel//computer_vision_sdk_2018.5.455/python/python3.5",
+        "/opt/intel//computer_vision_sdk_2018.5.455/python/python3.5/ubuntu16",
+        "/opt/intel//computer_vision_sdk_2018.5.455/deployment_tools/model_optimizer"
+    ]
+}

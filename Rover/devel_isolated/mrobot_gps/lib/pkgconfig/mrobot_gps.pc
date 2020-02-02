@@ -1,0 +1,8 @@
+prefix=/home/chenz16/Desktop/Rover/devel_isolated/mrobot_gps
+
+Name: mrobot_gps
+Description: Description of mrobot_gps
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

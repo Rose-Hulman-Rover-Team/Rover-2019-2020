@@ -1,2 +1,0 @@
-rover_imu
--DCATKIN_DEVEL_PREFIX=/home/chenz16/imu/devel -DCMAKE_INSTALL_PREFIX=/home/chenz16/imu/install -G Unix Makefiles
