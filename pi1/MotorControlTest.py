@@ -3,7 +3,7 @@ from __future__ import division
 import time
 
 # Import the PCA9685 module.
-import Adafruit_PCA9685
+#import Adafruit_PCA9685
 import socket #import socket module
 import time,threading
 import serial, string
@@ -17,13 +17,13 @@ ser = serial.Serial('/dev/ttyUSB0',115200, 8, 'N',1, timeout = 1)
 
 #defaultdic = copy.deepcopy(dic)
 
-pwm = Adafruit_PCA9685.PCA9685()
+#pwm = Adafruit_PCA9685.PCA9685()
 
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
 
 # Set frequency to 60hz, good for servos.
-pwm.set_pwm_freq(50)
+#pwm.set_pwm_freq(50)
 
 
 def send(send):
@@ -121,7 +121,7 @@ dic = {
 cs = socket.socket() #create a socket object
 cs.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-host = '192.168.1.88' #Host i.p
+host = '192.168.1.253' #Host i.p
 cport = 12397 #Reserve a port for your service
 print ("Start")
 cs.connect((host,cport))
@@ -154,8 +154,8 @@ while(True):
                 outputL = 330
         if(abs(outputR-330) < 15 ):
                 outputR = 330
-        pwm.set_pwm(1,0,outputL)
-        pwm.set_pwm(0,0,outputR)
+        #pwm.set_pwm(1,0,outputL)
+        #pwm.set_pwm(0,0,outputR)
 
 
 
