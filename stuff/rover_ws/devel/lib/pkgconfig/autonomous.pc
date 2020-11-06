@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Desktop/rover_ws/devel
+
+Name: autonomous
+Description: Description of autonomous
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/Desktop/rover_ws/devel/lib 
+Requires: 

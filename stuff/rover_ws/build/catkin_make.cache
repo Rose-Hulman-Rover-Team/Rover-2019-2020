@@ -1,0 +1,2 @@
+autonomous:camera:drive_chain:navigation:robot_arm:sensor:teleop:wireless
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/Desktop/rover_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Desktop/rover_ws/install -G Unix Makefiles
